@@ -5,7 +5,7 @@ from config import *
 from v1.resources.submissions import submissions
 
 app = Flask(__name__)
-app.register_blueprint(submissions)
+app.register_blueprint(submissions, url_prefix='/api/v1/submissions')
 
 config = globals()[os.environ['ENV']]
 app.config.from_object(config)
