@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  web:
+    container_name: example-web
+    build: .
+    ports:
+      - 5100:5100
+    depends_on:
+      - mongodb
+    environment:
+      - ENV=Development
+    volumes:
+      - .:/code
+  mongodb:
+    image: mongo
+    container_name: example-mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - db-data:/data/db
+
+volumes:
+  db-data:
